@@ -5,6 +5,8 @@
 import { LitElement, html, css } from "lit";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
+import { DDD, DDDPulseEffectSuper } from "@haxtheweb/d-d-d/d-d-d.js";
+import { DDDDataAttributes } from "@haxtheweb/d-d-d/lib/DDDStyles";
 /**
  * `ddd-card`
  * 
@@ -62,23 +64,27 @@ export class DddCard extends DDDSuper(I18NMixin(LitElement)) {
       }
       .card{
         border: 1px solid;
-        padding: 4px;
         text-align: center;
         flex-wrap: wrap;
         width: 240px;
+        border-radius: var(--ddd-border-radius, 8px);
 
       }
-      .image{
-        display: flex;
-        padding: 8px;
+      .image img{
         width: 100%;
-        text-align: center;
-
+        height: auto;
+        border-radius: var(--ddd-border-radius, 8px);
       }
       .wrapper {
         margin: var(--ddd-spacing-2);
         padding: var(--ddd-spacing-4);
       }
+      .btn button{
+        background-color: var(--ddd-theme-default-link);
+        color: white;
+        width: 95%;
+        margin-bottom: 8px
+            }
       h3 span {
         font-size: var(--ddd-card-list-label-font-size, var(--ddd-font-size-s));
       }
