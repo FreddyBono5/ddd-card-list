@@ -21,6 +21,7 @@ export class DddCard extends DDDSuper(I18NMixin(LitElement)) {
 
   constructor() {
     super();
+    this.primary = "";
     this.link = "";
     this.img = "";
     this.cardHeader = "Campus";
@@ -42,6 +43,7 @@ export class DddCard extends DDDSuper(I18NMixin(LitElement)) {
       cardHeader: { type: String },
       cardText: { type: String },
       link: { type: String },
+      primary: { type: String, reflect: true, DDDDataAttributes: "data-primary" },
     };
   }
 
@@ -54,23 +56,48 @@ export class DddCard extends DDDSuper(I18NMixin(LitElement)) {
         color: var(--ddd-theme-primary);
         background-color: var(--ddd-theme-accent);
         font-family: var(--ddd-font-navigation);
+        text-align: left;
+        width: 400px;
+  
       }
       .card{
-        border: 1px solid;
         text-align: center;
         flex-wrap: wrap;
-        width: 240px;
+        width: 320px;
         border-radius: var(--ddd-border-radius, 8px);
 
       }
       .image img{
-        width: 100%;
-        height: auto;
-        border-radius: var(--ddd-border-radius, 8px);
+        width: 100%;     
+        height: auto;   
+        display: block;
+      }
+      .image{
+        border-bottom: 12px var(--ddd-theme-default-nittanyNavy) solid;
+
+      }
+      .header{
+        padding-left: 16px;
+        text-align: left;
+      }
+      .text{
+        padding-left: 16px;
+        text-align: left;
+      }
+      img{
+        border-radius: var(--ddd-border-radius, 12px) var(--ddd-border-radius, 12px) 0 0;
+        
       }
       .wrapper {
         margin: var(--ddd-spacing-2);
         padding: var(--ddd-spacing-4);
+      }
+      .bar{
+        text-align: left;
+        padding-left: 10px;
+        color: var(--ddd-theme-default-nittanyNavy) solid;
+        border: none;
+        font-weight: bold;
       }
       .btn button{
         background-color: var(--ddd-theme-default-link);
@@ -92,11 +119,14 @@ export class DddCard extends DDDSuper(I18NMixin(LitElement)) {
     <div class="image">
       <img src = ${this.img}>
     </div>
+    <div class="bar">
+      ${this.title}
+    </div>
     <div class="header">
       <h3>${this.cardHeader}</h3>
     </div>
     <div class="text">
-      <p>${this.cardText}</p>
+      <slot></slot>
     </div>
     <div class="btn">
       <a href = ${this.link} ><button>Explore</button></a>

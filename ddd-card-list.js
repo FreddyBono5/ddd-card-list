@@ -5,6 +5,7 @@
 import { LitElement, html, css } from "lit";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
+import { DDDDataAttributes } from "@haxtheweb/d-d-d/lib/DDDStyles";
 
 /**
  * `ddd-card-list`
@@ -20,6 +21,10 @@ export class DddCardList extends DDDSuper(I18NMixin(LitElement)) {
 
   constructor() {
     super();
+    this.description = "";
+    this.image = "";
+    this.primary = "";
+    this.accent = "";
     this.title = "";
     this.t = this.t || {};
     this.t = {
@@ -40,6 +45,10 @@ export class DddCardList extends DDDSuper(I18NMixin(LitElement)) {
     return {
       ...super.properties,
       title: { type: String },
+      image: { type: String },
+      primary: { type: String, reflect: true, DDDDataAttributes: "data-primary" },
+      accent: { type: String, reflect: true, DDDDataAttributes: "data-accent" },
+      description: { type: String },
     };
   }
 
@@ -52,6 +61,13 @@ export class DddCardList extends DDDSuper(I18NMixin(LitElement)) {
         color: var(--ddd-theme-primary);
         background-color: var(--ddd-theme-accent);
         font-family: var(--ddd-font-navigation);
+        border: 1px var (--ddd-border-color) #ccc;
+        border-radius: var(--ddd-border-radius, 8px);
+        padding: var(--ddd-spacing-3);
+        text-align: center;
+      }
+      div ::slotted(*) {
+        display: inline-block;
       }
       .wrapper {
         margin: var(--ddd-spacing-2);
@@ -60,6 +76,10 @@ export class DddCardList extends DDDSuper(I18NMixin(LitElement)) {
       h3 span {
         font-size: var(--ddd-card-list-label-font-size, var(--ddd-font-size-s));
       }
+      .bar{
+        padding: var(--ddd-spacing-2);
+        font-weight: bold;
+      }
     `];
   }
 
@@ -67,7 +87,7 @@ export class DddCardList extends DDDSuper(I18NMixin(LitElement)) {
   render() {
     return html`
 <div class="wrapper">
-  <h3><span>${this.t.title}:</span> ${this.title}</h3>
+  <h3><span></span> ${this.title}</h3>
   <slot></slot>
 </div>`;
   }
