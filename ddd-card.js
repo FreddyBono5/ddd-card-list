@@ -83,6 +83,7 @@ export class DddCard extends DDDSuper(I18NMixin(LitElement)) {
       .text{
         padding-left: 16px;
         text-align: left;
+        height: 200px;
       }
       img{
         border-radius: var(--ddd-border-radius, 12px) var(--ddd-border-radius, 12px) 0 0;
@@ -98,6 +99,9 @@ export class DddCard extends DDDSuper(I18NMixin(LitElement)) {
         color: var(--ddd-theme-default-nittanyNavy) solid;
         border: none;
         font-weight: bold;
+      }
+      .box-wrapper {
+        background-color: white;
       }
       .btn button{
         background-color: var(--ddd-theme-default-link);
@@ -119,17 +123,19 @@ export class DddCard extends DDDSuper(I18NMixin(LitElement)) {
     <div class="image">
       <img src = ${this.img}>
     </div>
-    <div class="bar">
-      ${this.title}
-    </div>
-    <div class="header">
-      <h3>${this.cardHeader}</h3>
-    </div>
-    <div class="text">
-      <slot></slot>
-    </div>
-    <div class="btn">
-      <a href = ${this.link} ><button>Explore</button></a>
+    <div class="box-wrapper">
+      <div class="bar">
+        ${this.title}
+      </div>
+      <div class="header">
+        <h3>${this.cardHeader}</h3>
+      </div>
+      <div class="text">
+        <slot></slot>
+      </div>
+      <div class="btn">
+        <a href = ${this.link} ><button>Explore</button></a>
+      </div>
     </div>
   </div>
 </div>`;
