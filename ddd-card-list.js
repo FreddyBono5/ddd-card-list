@@ -77,6 +77,13 @@ export class DddCardList extends DDDSuper(I18NMixin(LitElement)) {
         margin: var(--ddd-spacing-2);
         padding: var(--ddd-spacing-4);
       }
+      @media (max-width: 768px) {
+        .wrapper {
+          grid-template-columns: 1fr;
+          gap: var(--ddd-spacing-4);
+          padding: var(--ddd-spacing-3);
+        }
+      }
       h3 span {
         font-size: var(--ddd-card-list-label-font-size, var(--ddd-font-size-s));
       }
