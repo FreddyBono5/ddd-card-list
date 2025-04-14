@@ -6,6 +6,7 @@ import { LitElement, html, css } from "lit";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { DDDDataAttributes } from "@haxtheweb/d-d-d/lib/DDDStyles";
+import "./ddd-card.js";
 
 /**
  * `ddd-card-list`
@@ -46,8 +47,8 @@ export class DddCardList extends DDDSuper(I18NMixin(LitElement)) {
       ...super.properties,
       title: { type: String },
       image: { type: String },
-      primary: { type: String, reflect: true, DDDDataAttributes: "data-primary" },
-      accent: { type: String, reflect: true, DDDDataAttributes: "data-accent" },
+      primary: { type: String, reflect: true, attribute: "data-primary" },
+      accent: { type: String, reflect: true, attribute: "data-accent" },
       description: { type: String },
     };
   }
@@ -64,11 +65,13 @@ export class DddCardList extends DDDSuper(I18NMixin(LitElement)) {
         font-family: var(--ddd-font-navigation);
         border: 1px var (--ddd-border-color) #ccc;
         border-radius: var(--ddd-border-radius, 8px);
-        padding: var(--ddd-spacing-3);
-        text-align: center;
+        text-align: left;
+        padding: var(--ddd-spacing-1);
       }
       div ::slotted(*) {
         display: inline-block;
+        padding: var(--ddd-spacing-1);
+        
       }
       .wrapper {
         margin: var(--ddd-spacing-2);
@@ -79,7 +82,7 @@ export class DddCardList extends DDDSuper(I18NMixin(LitElement)) {
       }
       .bar{
         padding: var(--ddd-spacing-2);
-        font-weight: bold;
+        font-weight: var(--ddd-font-weight-bold);
       }
     `];
   }

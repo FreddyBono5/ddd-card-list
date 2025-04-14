@@ -52,20 +52,20 @@ export class DddCard extends DDDSuper(I18NMixin(LitElement)) {
     return [super.styles,
     css`
       :host {
-        display: block;
-        color: var(--ddd-theme-primary);
+        display: inline-block;
         background-color: var(--ddd-theme-accent);
         font-family: var(--ddd-font-navigation);
         text-align: left;
         width: 400px;
+        margin: var(--ddd-spacing-5);
+        margin-left: var(--ddd-spacing-3);
   
       }
       .card{
         text-align: center;
         flex-wrap: wrap;
-        width: 320px;
-        border-radius: var(--ddd-border-radius, 8px);
-
+        width: 400px;
+        height: 525px;       
       }
       .image img{
         width: 100%;     
@@ -73,21 +73,23 @@ export class DddCard extends DDDSuper(I18NMixin(LitElement)) {
         display: block;
       }
       .image{
-        border-bottom: 12px var(--ddd-theme-default-nittanyNavy) solid;
+        border-bottom: 12px var(--ddd-theme-primary) solid;
 
       }
       .header{
-        padding-left: 16px;
+        padding-left: var(--ddd-spacing-4);
+        padding-top: var(--ddd-spacing-1);
         text-align: left;
+        color: var(--ddd-theme-primary);
       }
       .text{
-        padding-left: 16px;
+        padding-left: var(--ddd-spacing-4);
         text-align: left;
-        height: 200px;
+        height: 120px;
+        color: var(--ddd-theme-default-coalyGray);
       }
       img{
-        border-radius: var(--ddd-border-radius, 12px) var(--ddd-border-radius, 12px) 0 0;
-        
+        border-radius: var(--ddd-border-radius, 20px) var(--ddd-border-radius, 20px) 0 0;        
       }
       .wrapper {
         margin: var(--ddd-spacing-2);
@@ -95,20 +97,30 @@ export class DddCard extends DDDSuper(I18NMixin(LitElement)) {
       }
       .bar{
         text-align: left;
-        padding-left: 10px;
+        padding-left: var(--ddd-spacing-3);
         color: var(--ddd-theme-default-nittanyNavy) solid;
-        border: none;
-        font-weight: bold;
+        font-weight: var(--ddd-font-weight-bold);
       }
       .box-wrapper {
-        background-color: white;
-      }
+        background-color: var(--ddd-theme-default-white);
+        border-bottom-right-radius: var(--ddd-border-radius, 10px);
+        border-bottom-left-radius: var(--ddd-border-radius, 10px);
+        padding-top: var(--ddd-spacing-1);
+        box-shadow: var(--ddd-boxShadow-md);
+            }
       .btn button{
         background-color: var(--ddd-theme-default-link);
-        color: white;
-        width: 95%;
-        margin-bottom: 8px
-            }
+        color: var(--ddd-theme-default-white);
+        width: 90%;
+        height: 45px;
+        margin-bottom: var(--ddd-spacing-5);
+        font-size: var(--ddd-font-size-4xs);
+        border-radius: var(--ddd-radius-sm);
+        border: var(--ddd-border-xs);
+        }
+        .btn button:hover{
+        background-color: var(--ddd-theme-primary);
+        }
       h3 span {
         font-size: var(--ddd-card-list-label-font-size, var(--ddd-font-size-s));
       }
@@ -134,7 +146,7 @@ export class DddCard extends DDDSuper(I18NMixin(LitElement)) {
         <slot></slot>
       </div>
       <div class="btn">
-        <a href = ${this.link} ><button>Explore</button></a>
+        <a href = ${this.link} ><button>Explore ></button></a>
       </div>
     </div>
   </div>
